@@ -4,24 +4,38 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <link rel="stylesheet" href="/styles/overlays.css" />
+    <link rel="stylesheet" href="/styles/configuration.css">
+    <link rel="stylesheet" href="/styles/game.css">
     <title>Amőba!</title>
   </head>
+
   <body>
-    <header>
+    <div id="backdrop"></div>
+    <header id="main-header">
       <h1>Amőbázz!</h1>
       <p>Összetevők: HTML, CSS, JavaScript és sok-sok lelkesedés!</p>
     </header>
+
     <main>
-      <aside>
-        <h2>Válassz nevet</h2>
+      <aside class="modal" id="config-overlay">
+        <h2>Válassz nevet!</h2>
+
         <form>
-          <div>
+          <div class="form-control">
             <label for="playername">Játékos</label>
             <input type="text" name="playername" id="playername" />
           </div>
           <div>
-            <button type="button">Mégsem</button>
-            <button type="submit">Jóváhagyás</button>
+            <button type="button" class="btn btn-alt">Mégsem</button>
+            <button type="submit" class="btn">Jóváhagyás</button>
           </div>
         </form>
       </aside>
@@ -30,31 +44,31 @@
         <ol>
           <li>
             <article>
-              <h2>Player 1</h2>
-              <h3>PLAYER NAME</h3>
-              <p>X</p>
-              <button>Módosítás</button>
+              <h2>JÁTÉKOS 1</h2>
+              <h3>JÁTÉKOS NÉV</h3>
+              <p class="player-symbol">X</p>
+              <button class="btn btn-alt">Módosítás</button>
             </article>
           </li>
           <li>
             <article>
-              <h2>Player 2</h2>
-              <h3>PLAYER NAME</h3>
-              <p>O</p>
-              <button>Módosítás</button>
+              <h2>JÁTÉKOS 2</h2>
+              <h3>JÁTÉKOS NÉV</h3>
+              <p class="player-symbol">O</p>
+              <button class="btn btn-alt">Módosítás</button>
             </article>
           </li>
         </ol>
-        <button>Új játék</button>
+        <button class="btn">Új játék</button>
       </section>
 
       <section id="active-game">
-          <article>
-              <h3>Te nyertél, <span id="winner-name">JÁTÉKOS</span>!</h3>
-              <p>Kattints az "Új játék" gombra az újrakezdéshez!</p>
-          </article>
+        <article id="game-over">
+          <h2>Te nyertél, <span id="winner-name">JÁTÉKOS</span>!</h2>
+          <p>Kattints az "Új játék" gombra az újrakezdéshez!</p>
+        </article>
         <p>Te jössz, <span id="active-player-name">JÁTÉKOS</span>!</p>
-        <ol>
+        <ol id="game-board">
           <li></li>
           <li></li>
           <li></li>
