@@ -12,8 +12,12 @@
     />
     <link rel="stylesheet" href="/styles/styles.css" />
     <link rel="stylesheet" href="/styles/overlays.css" />
-    <link rel="stylesheet" href="/styles/configuration.css">
-    <link rel="stylesheet" href="/styles/game.css">
+    <link rel="stylesheet" href="/styles/configuration.css" />
+    <link rel="stylesheet" href="/styles/game.css" />
+    <script src="/scripts/config.js" defer></script>
+    <script src="/scripts/game.js" defer></script>
+    <script src="/scripts/app.js" defer></script>
+    <!-- A belépési pontot kell utóljára hozzáadni, hogy megtalálja a többi .js referenciáit! -->
     <title>Amőba!</title>
   </head>
 
@@ -31,10 +35,15 @@
         <form>
           <div class="form-control">
             <label for="playername">Játékos</label>
-            <input type="text" name="playername" id="playername" />
+            <input type="text" name="playername" id="playername" required />
           </div>
+
+          <p id="config-errors"></p>
+
           <div>
-            <button type="button" class="btn btn-alt">Mégsem</button>
+            <button type="reset" class="btn btn-alt" id="cancel-config-btn">
+              Mégsem
+            </button>
             <button type="submit" class="btn">Jóváhagyás</button>
           </div>
         </form>
@@ -43,23 +52,28 @@
       <section id="game-configuration">
         <ol>
           <li>
-            <article>
+            <article id="player-1-data">
               <h2>JÁTÉKOS 1</h2>
               <h3>JÁTÉKOS NÉV</h3>
               <p class="player-symbol">X</p>
-              <button class="btn btn-alt">Módosítás</button>
+              <button class="btn btn-alt" id="edit-player-1-btn" data-playerid="1">
+                Módosítás
+              </button>
             </article>
           </li>
           <li>
-            <article>
+            <article id="player-2-data">
               <h2>JÁTÉKOS 2</h2>
               <h3>JÁTÉKOS NÉV</h3>
               <p class="player-symbol">O</p>
-              <button class="btn btn-alt">Módosítás</button>
+              <button class="btn btn-alt" id="edit-player-2-btn" data-playerid="2">
+                Módosítás
+              </button>
             </article>
           </li>
         </ol>
-        <button class="btn">Új játék</button>
+        <button class="btn" id="start-game-btn">Új játék</button>
+        <p id="startup-errors"></p>
       </section>
 
       <section id="active-game">
@@ -67,21 +81,23 @@
           <h2>Te nyertél, <span id="winner-name">JÁTÉKOS</span>!</h2>
           <p>Kattints az "Új játék" gombra az újrakezdéshez!</p>
         </article>
+        
         <p>Te jössz, <span id="active-player-name">JÁTÉKOS</span>!</p>
         <ol id="game-board">
-          <li></li>
-          <li></li>
-          <li></li>
+          <li data-col="1" data-row="1"></li>
+          <li data-col="2" data-row="1"></li>
+          <li data-col="3" data-row="1"></li>
 
-          <li></li>
-          <li></li>
-          <li></li>
+          <li data-col="1" data-row="2"></li>
+          <li data-col="2" data-row="2"></li>
+          <li data-col="3" data-row="2"></li>
 
-          <li></li>
-          <li></li>
-          <li></li>
+          <li data-col="1" data-row="3"></li>
+          <li data-col="2" data-row="3"></li>
+          <li data-col="3" data-row="3"></li>
         </ol>
       </section>
+
     </main>
   </body>
 </html>
